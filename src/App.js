@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+//components
+import Intro from "./components/Intro";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      userText: ""
+    }
+    this.updateUserText = this.updateUserText.bind(this);
+  }
+
+  updateUserText(value) {
+    this.setState({userText: value});
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Hi My Name Is {this.state.userText}</h1>
+        <Intro updateUserText={this.updateUserText}/>
+      </div>
+    );
+  }
 }
 
 export default App;
